@@ -160,24 +160,16 @@ namespace UsersDeltaQuery
                 if (user.UserPrincipalName != null)
                     Console.WriteLine(user.UserPrincipalName.ToLower() + "\t\t" + user.DisplayName);
             }
-            while (userPage.NextPageRequest != null)
+
+            if (userPage.NextPageRequest != null)
             {
-                // Console.WriteLine("=== NEXT LINK: " + userPage.NextPageRequest.RequestUrl);
-                // Console.WriteLine("=== SKIP TOKEN: " + userPage.NextPageRequest.QueryOptions[0].Value);
-
                 userPage = await userPage.NextPageRequest.GetAsync();
-                foreach (var user in userPage)
-                {
-                    if (user.UserPrincipalName != null)
-                        Console.WriteLine(user.UserPrincipalName.ToLower() + "\t\t" + user.DisplayName);
-                }
+                return await DisplayChangedUsersAndGetDeltaLink(userPage);
             }
-
-            // Finally, get the delta link
-            string deltaLink = (string)userPage.AdditionalData["@odata.deltaLink"];
-            // Console.WriteLine("=== DELTA LINK: " + deltaLink);
-
-            return deltaLink;
+            else
+            {
+                return (string)userPage.AdditionalData["@odata.deltaLink"];    
+            }
         }
     }
 }
