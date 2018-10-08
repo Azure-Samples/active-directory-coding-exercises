@@ -7,18 +7,20 @@ to take to complete the exercise - by adding code and guidance on what to add in
 
 ```C#
 /// <exercise_hint>
-/// Some hints
+/// Some hints that can help you.
+/// This topic also provides relevant background https://developer.microsoft.com/en-us/graph/docs/concepts/delta_query_users
 /// </exercise_hint>
 
 /// ADD CODE HERE
 ```
+
+All changes in this exercise are in the `Program.cs` file, although the getting started steps include some changes to the configuration in `Config.cs`
 
 ## Pre-requisites
 
 1. VS 2017 or VS Code
 2. .NET Core 2.1 SDK
 3. If using VS Code, you'll need the **C# for Visual Studio Code** extension
-
 
 ## Instructions
 
@@ -39,9 +41,16 @@ to take to complete the exercise - by adding code and guidance on what to add in
 8. Start Debugging (or F5/equivalent), but switch debug to use "External Console"
 9. In the partially built state, the app should run, and appear to create a user, ask you to press a key, and then it cleans up, and is done.
 
-### Exercise 1
+### Part 1 - First sync of all users
 
-### Exercise 2
+In this part of the exercise, you'll add code to issue a delta query that pages through all users (and writes them out), until you get to the last page, and then finally get the delta link (which contains the delta token).  You'll need the delta link so that you can make a subsequent call to get any changes/deltas since the first sync.
 
-### Exercise 3
+1. Find the `DisplayChangedUsersAndGetDeltaLink` method.  You'll need to flesh out this method.
+    1. First area that needs changes, is to page through all the users and write them out to the console.
+    2. The second is getting the delta link and returning it.
+2. Back in `RunAsync` find the first `/// ADD CODE HERE` and add a call to `DisplayChangedUsersAndGetDeltaLink`.
+3. At this point you should be able to re build and run the exercise.  This should output all the users in your tenant in the first sync.
 
+### Part 2 - Get changes
+
+Now you've done the first sync, we'll write the code to do a delta sync after we create a new user.  There are 2 more places (marked with `/// ADD CODE HERE`), the first which will initialize a new page request, and the second calls the `DisplayChangedUsersAndGetDeltaLink` again to get changes, in a loop.

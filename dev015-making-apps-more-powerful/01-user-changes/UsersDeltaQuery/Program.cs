@@ -59,7 +59,7 @@ namespace UsersDeltaQuery
                     async (requestMessage) =>
                     {
                         var authenticationResult = await daemonClient.AcquireTokenForClientAsync(new string[] { "https://graph.microsoft.com/.default" });
-                        requestMessage.Headers.Authorization = new AuthenticationHeaderValue("bearer", authenticationResult.AccessToken);
+                        requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", authenticationResult.AccessToken);
                     }));
 
         #region first sync of users
