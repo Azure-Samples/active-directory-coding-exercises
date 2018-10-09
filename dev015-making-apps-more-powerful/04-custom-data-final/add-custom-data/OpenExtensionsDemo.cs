@@ -1,8 +1,7 @@
-﻿using Microsoft.Identity.Client;
+﻿using device_code_flow_console;
+using Microsoft.Identity.Client;
 using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -10,9 +9,12 @@ using System.Threading.Tasks;
 
 namespace add_custom_data
 {
-    class OpenExtensionsDemo
+    class OpenExtensionsDemo : PublicAppUsingDeviceCodeFlow
     {
-        PublicClientApplication app;
+        public OpenExtensionsDemo(PublicClientApplication app) : base(app)
+        {
+        }
+
         /// <summary>
         /// Scopes to request access to the protected Web API (here Microsoft Graph)
         /// </summary>
@@ -20,15 +22,8 @@ namespace add_custom_data
 
         public async Task RunAsync()
         {
-
-
-            AuthenticationConfig config = AuthenticationConfig.ReadFromJsonFile("appsettings.json");
-            app = new PublicClientApplication(config.ClientId, config.Authority);
             // string[] scopes = { "User.ReadWrite" };
-
-            var myInfo = new MyInformation();
-
-            AuthenticationResult authenticationResult = await myInfo.AcquireATokenFromCacheOrDeviceCodeFlow(Scopes);
+            AuthenticationResult authenticationResult = await AcquireATokenFromCacheOrDeviceCodeFlow(Scopes);
             if (authenticationResult != null)
             {
                 Console.ForegroundColor = ConsoleColor.Green;

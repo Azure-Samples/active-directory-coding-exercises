@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+using Microsoft.Identity.Client;
 using System;
 using System.Threading.Tasks;
 
@@ -42,28 +43,33 @@ namespace add_custom_data
     {
         static void Main(string[] args)
         {
-            MyInformation myInformation = new MyInformation();
             try
             {
-                myInformation.DisplayMeAndMyManagerAsync().Wait();
+                RunAsync(args).GetAwaiter().GetResult();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine(ex.Message);
                 Console.ResetColor();
             }
 
-            RunAsync(args).GetAwaiter().GetResult();
         }
 
         static async Task RunAsync(string[] args)
         {
+            AuthenticationConfig config = AuthenticationConfig.ReadFromJsonFile("appsettings.json");
+            var app = new PublicClientApplication(config.ClientId, config.Authority);
 
-            var openExtensionsDemo = new OpenExtensionsDemo();
+            MyInformation myInformation = new MyInformation(app);
+            await myInformation.DisplayMeAndMyManagerAsync();
+
+
+            var openExtensionsDemo = new OpenExtensionsDemo(app);
             await openExtensionsDemo.RunAsync();
 
-            /// var schemaExtensionDemo = new SchemaExtensionsDemo();
+            // TODO: derive SchemaExtensionDemo from PublicAppUsingDeviceCodeFlow
+            /// var schemaExtensionDemo = new SchemaExtensionsDemo(app);
             /// await schemaExtensionDemo.RunAsync(config.ClientId);
 
             System.Console.WriteLine("Press ENTER to continue.");
