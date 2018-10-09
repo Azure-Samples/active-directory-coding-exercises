@@ -36,6 +36,9 @@ namespace add_custom_data
                     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
 
                     //Use open extensions
+                    /// <todo>
+                    /// You'll need to flesh out each of the methods below
+                    /// </todo>
                     await AddRoamingProfileInformationAsync(client);
                     await RetrieveRoamingProfileInformationAsync(client);
                     await UpdateRoamingProfileInformationAsync(client);
@@ -48,18 +51,25 @@ namespace add_custom_data
             Console.WriteLine("Add roaming info to the signed-in user");
             Console.WriteLine();
 
-            var request = new HttpRequestMessage(HttpMethod.Post, "me/extensions");            
-            request.Content = new StringContent(@"{
-                  '@odata.type': 'microsoft.graph.openTypeExtension',
-                  'extensionName': 'com.contoso.roamingSettings',
-                  'theme': 'dark',
-                  'color': 'purple',
-                  'lang': 'Japanese'
-                }", Encoding.UTF8, "application/json");
+            /// <exercise_hint>
+            /// Add a REST http request to Microsoft Graph to add an open extension to the signed in user
+            /// Use the HttpRequestMessage helper
+            /// Use https://developer.microsoft.com/en-us/graph/docs/concepts/extensibility_open_users as a reference
+            /// </exercise_hint>
+            
+            ///<todo>
+            /// Add code here
+            ///</todo> 
+
+            /// <todo>
+            /// remove comments below once you've added code to create a request object
+            /// </todo>
+            /*
             var response = await client.SendAsync(request);
             response.WriteCodeAndReasonToConsole();
             Console.WriteLine(JValue.Parse(await response.Content.ReadAsStringAsync()).ToString(Newtonsoft.Json.Formatting.Indented));
             Console.WriteLine();
+            */
         }
 
         async Task RetrieveRoamingProfileInformationAsync(HttpClient client)
@@ -67,11 +77,25 @@ namespace add_custom_data
             Console.WriteLine("Get the signed-in user profile and roaming data");
             Console.WriteLine();
 
-            var request = new HttpRequestMessage(HttpMethod.Get, "me?$select=id,displayName,mail&$expand=extensions");
+            /// <exercise_hint>
+            /// Add a REST http request to Microsoft Graph to get the signed in user and their roaming data extension
+            /// Use the HttpRequestMessage helper
+            /// Use https://developer.microsoft.com/en-us/graph/docs/concepts/extensibility_open_users as a reference
+            /// </exercise_hint>
+
+            ///<todo>
+            /// Add code here
+            ///</todo> 
+
+            /// <todo>
+            /// remove comments below once you've added code to create a request object
+            /// </todo>
+            /*
             var response = await client.SendAsync(request);
             response.WriteCodeAndReasonToConsole();
             Console.WriteLine(JValue.Parse(await response.Content.ReadAsStringAsync()).ToString(Newtonsoft.Json.Formatting.Indented));
             Console.WriteLine();
+            */
         }
 
         async Task UpdateRoamingProfileInformationAsync(HttpClient client)
@@ -79,15 +103,24 @@ namespace add_custom_data
             Console.WriteLine("Update user profile");
             Console.WriteLine();
 
-            var request = new HttpRequestMessage(new HttpMethod("PATCH"), "me/extensions/com.contoso.roamingSettings");
-            request.Content = new StringContent(@"{
-                    'theme': 'light',
-                    'color': 'blue',
-                    'lang': 'English'
-                }", Encoding.UTF8, "application/json");
-            var response = await client.SendAsync(request);
-            response.WriteCodeAndReasonToConsole();
+            /// <exercise_hint>
+            /// Add a REST http request to Microsoft Graph to patch the roaming extension data
+            /// Use the HttpRequestMessage helper
+            /// Use https://developer.microsoft.com/en-us/graph/docs/concepts/extensibility_open_users as a reference
+            /// </exercise_hint>
 
+            ///<todo>
+            /// Add code here
+            ///</todo> 
+
+            /// <todo>
+            /// remove comments below once you've added code to create a request object
+            /// </todo>
+            /*
+            var response = await client.SendAsync(request);
+            
+            response.WriteCodeAndReasonToConsole();
+            */
         }
 
          async Task DeleteRoamingProfileInformationAsync(HttpClient client)
@@ -95,10 +128,25 @@ namespace add_custom_data
             Console.WriteLine("Remove the roaming profile from the signed-in user");
             Console.WriteLine();
 
-            var request = new HttpRequestMessage(HttpMethod.Delete, "me/extensions/com.contoso.roamingSettings");
+
+            /// <exercise_hint>
+            /// Add a REST http request to Microsoft Graph to delete the open extension from the signed in user
+            /// Use the HttpRequestMessage helper
+            /// Use https://developer.microsoft.com/en-us/graph/docs/concepts/extensibility_open_users as a reference
+            /// </exercise_hint>
+
+            ///<todo>
+            /// Add code here
+            ///</todo> 
+
+            /// <todo>
+            /// remove comments below once you've added code to create a request object
+            /// </todo>
+            /*
             var response = await client.SendAsync(request);
 
             response.WriteCodeAndReasonToConsole();
+            */
         }
 
 
