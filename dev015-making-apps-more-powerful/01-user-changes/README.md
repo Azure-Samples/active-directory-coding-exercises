@@ -32,7 +32,7 @@ All changes in this exercise are in the `Program.cs` file, although the getting 
     2. If package restore doesn't work as part of building the solution, you can do this manually too: Terminal -> New Terminal, and then in the new terminal, type: 
         * `dotnet add package Microsoft.Graph`, and hit Restore button when prompted (if prompted)
         * `dotnet add package Microsoft.Identity.Client`, and hit Restore button when prompted (if prompted)
-1. Go to the private preview app registration experience.  Register a new single tenant app, and create a new secret.  Also get the client id. Confige the app with User.ReadWrite.All and then **grant** the app this permission.
+1. Go to the private preview app registration experience at http://aka.ms/AppRegPrivatePreview . Register a new single tenant app, and create a new secret.  Also get the client id. Configure the app with User.ReadWrite.All and then **grant** the app this permission.
 3. Update the Config class in the Program.cs file with your app's co-ordinates.
 4. In VS Code, Debug -> Open Configuration, and then click "Add Configuration" button. Then select an appropriate option (.NET: Launch .Net Core Console App)
   * Change "program" to the same execuatable name as in the existing .Net Core console app config
