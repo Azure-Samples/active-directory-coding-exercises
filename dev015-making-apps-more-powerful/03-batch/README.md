@@ -26,13 +26,13 @@ All changes in this exercise are in the `Program.cs` file, although the getting 
 
 ### Getting started
 
-1. Clone or download the repo from here: https://github.com/Azure-Samples/active-directory-coding-exercises
-2. Go to the `dev015-making-apps-more-powerful\05-batch` folder and open the solution file in VS 2017, or in VS Code open the 01-user-changes folder.
+1. Clone or download the repo from here: [https://github.com/Azure-Samples/active-directory-coding-exercises](https://github.com/Azure-Samples/active-directory-coding-exercises)
+2. Go to the `dev015-making-apps-more-powerful\03-batch` folder and open the solution file in VS 2017, or in VS Code open the `03-batch` folder.
     1. When opening in VS Code, click yes to resolve any required C# elements and also click to restore packages.
     2. If package restore doesn't work as part of building the solution, you can do this manually too: Terminal -> New Terminal, and then in the new terminal, type: 
         * `dotnet add package Microsoft.Graph`, and hit Restore button when prompted (if prompted)
         * `dotnet add package Microsoft.Identity.Client`, and hit Restore button when prompted (if prompted)
-1. Go to the private preview app registration experience at http://aka.ms/appregprivatepreview . Register a new single tenant app, and create a new secret.  Also get the client id. Configure the app with User.Read.All and Sites.Read.All permissions and then **grant** the app this permission.
+1. Go to the private preview app registration experience at [http://aka.ms/appregprivatepreview](http://aka.ms/appregprivatepreview) . Register a new single tenant app, and create a new secret.  Also get the client id. Configure the app with **User.Read.All** and **Sites.Read.All** permissions and then **grant** the app this permission.
 3. Update the Config class in the Program.cs file with your app's co-ordinates.
 4. In VS Code, Debug -> Open Configuration, and then click "Add Configuration" button. Then select an appropriate option (.NET: Launch .Net Core Console App)
   * Change "program" to the same execuatable name as in the existing .Net Core console app config

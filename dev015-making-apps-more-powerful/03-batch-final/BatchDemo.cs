@@ -58,6 +58,14 @@ namespace Batch
 
         async Task DemoBatch(HttpClient client)
         {
+            /// <summary>
+            /// Creates a batch that requests a user and the trending insights around them
+            /// </summary>
+            /// <todo>
+            /// The app uses client_credential flow - if it used a delegated flow, we could use /me alias
+            /// or the signed in user's upn. However, you need to replace {upn} with an existing user's UPN
+            /// or you will see an error
+            /// </todo>
             var request = new HttpRequestMessage(HttpMethod.Post, "$batch");
             request.Content = new StringContent(@"{
                   'requests': [
