@@ -39,14 +39,6 @@ The screenshot below shows the app's start page.
   
 ![Microsoft Graph Connect Sample for ASP.NET Core 2.0 screenshot](readme-images/Page1.PNG)
 
-### Exercise
-
-Look for the exercise hints and todos (ADD CODE HERE) in the following places
-
-1. Create subscription for current signed in user's email messages, in the `SubscriptionController.cs` controller.
-2. Verify that notifications are coming through, in the `NotificationsController.cs` controller.
-
-
 ## Key components of the sample
 
 The following files contain code that's related to connecting to Microsoft Graph, loading user data and sending emails.
