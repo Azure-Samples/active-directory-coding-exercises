@@ -1,0 +1,61 @@
+﻿@model Microsoft.Graph.Subscription
+@{
+    ViewBag.Title = "Subscription";
+}
+<h2>Subscription</h2>
+@if (Model != null)
+{
+    <p>The following subscription was successfully created.</p>
+    <div>
+        <table>
+            <tr>
+                <td>
+                    <label asp-for="Resource" class="control-label col-md-2"></label>
+                </td>
+                <td>
+                    @Model.Resource
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label asp-for="ChangeType" class="control-label col-md-2"></label>
+                </td>
+                <td>
+                    @Model.ChangeType
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label asp-for="ClientState" class="control-label col-md-2"></label>
+                </td>
+                <td>
+                    @Model.ClientState
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label asp-for="Id" class="control-label col-md-2"></label>
+                </td>
+                <td>
+                    @Model.Id
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label asp-for="ExpirationDateTime" class="control-label col-md-2"></label>
+                </td>
+                <td>
+                    @Model.ExpirationDateTime
+                </td>
+            </tr>
+        </table>
+    </div>
+}
+<br />
+<div>
+    <p>Choose <b>Watch for notifications</b> and then send an email to your user. The <b>Notifications</b> page will display metadata for new messages.</p>
+    @using (Html.BeginForm("Index", "Notification"))
+    {
+        <button type="submit">Watch for notifications</button>
+    }
+</div>

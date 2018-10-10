@@ -1,0 +1,51 @@
+﻿<!--  Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license.
+        See LICENSE in the source repository root for complete license information. -->
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h2>Microsoft Graph ASP.NET Core 2.0 Connect Sample</h2>
+
+@if (!User.Identity.IsAuthenticated)
+{
+    <br />
+    <p>Choose <b>Sign in</b> at the top of the page and sign in with your work or school account.</p>
+}
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="alert alert-info @(TempData["Message"] == null ? "hidden" : null)" role="alert">
+        @Html.Raw(TempData["Message"])
+    </div>
+    <br />
+    <h4>Permissions</h4>
+    <p>This sample uses the OAuth2 client credentials flow using delegate permissions and the Azure AD v2.0 endpoint (MSAL). The sample uses only delegate permissions, therefore it does not require admin consent.</p>
+
+    <br />
+    <h4>Get started</h4>
+    <p>Change the email address in the box below to another valid account's email in the same tenant and click <b>Load data</b>!</p>
+    <form asp-controller="Home" asp-action="Index" method="get">
+        <input type="email" name="email" value="@ViewData["Email"]" style="width: 300px;" />
+        <button type="submit">Load data</button>
+    </form>
+    <br />
+    <div class="row">
+        <div class="col-md-3">
+            <img src="@ViewData["Picture"]" style="border-radius: 50%; height: 200px; width: 200px; margin: 20px;" />
+        </div>
+        <div class="col-md-9">
+            <pre>@ViewData["Response"]</pre>
+        </div>
+    </div>
+
+    <br />
+    <h4>Send an email</h4>
+    <form asp-controller="Home" asp-action="SendEmail" method="post">
+
+        <div class="form-group">
+            <label for="recipients">Recipient email addresses, separated by a semicolon</label>
+            <input type="text" name="recipients" value="@ViewData["Email"]" style="width: 300px;" />
+            <button type="submit">Send email</button>
+        </div>
+    </form>
+}
