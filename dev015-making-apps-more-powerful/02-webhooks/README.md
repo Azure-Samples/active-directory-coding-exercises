@@ -33,11 +33,11 @@ to take to complete the exercise - by adding code and guidance on what to add in
         * `dotnet add package Microsoft.Identity.Client`, and hit Restore button when prompted (if prompted)
 3. Go to the private preview app registration experience at http://aka.ms/appregprivatepreview . Register a new single tenant app, and create a new secret.  Also get the client id. Configure the app with **openid**, **email**, **profile**, **offline_access**, **User.Read**, **User.ReadBasic.All** and **Mail.Send** permissions and then **grant** the app this permission. Also ensure the redirect uri is set to https://YOURWEBAPP.azurewebsites.net/signin-oidc.
 4. Update appSettings.json file as below:
-   a. For the **ClientId** key, replace `ENTER_YOUR_APP_ID` with the application ID of your registered application.  
-   b. For the **ClientSecret** key, replace `ENTER_YOUR_SECRET` with the password of your registered application. Note that in production 
+   * a. For the **ClientId** key, replace `ENTER_YOUR_APP_ID` with the application ID of your registered application.  
+   * b. For the **ClientSecret** key, replace `ENTER_YOUR_SECRET` with the password of your registered application. Note that in production 
    apps you should always use certificates as your application secrets, but for this sample we will use a simple shared secret password.
-   c. For the **NotificationUrl**, replace "ENTER_YOUR_NOTIFYURL" with the Microsoft Azure Web App (ex: https://YOURWEBAPP.azurewebsites.net/.
-   d. For the **BaseUrl**, replace "ENTER_YOUR_APP_URL" with the Microsoft Azure Web App (ex: https://YOURWEBAPP.azurewebsites.net/)
+   * c. For the **NotificationUrl**, replace "ENTER_YOUR_NOTIFYURL" with the Microsoft Azure Web App (ex: https://YOURWEBAPP.azurewebsites.net/.
+   * d. For the **BaseUrl**, replace "ENTER_YOUR_APP_URL" with the Microsoft Azure Web App (ex: https://YOURWEBAPP.azurewebsites.net/)
 5. Publish app to Azure from [VS 2017](https://docs.microsoft.com/en-us/aspnet/core/tutorials/publish-to-azure-webapp-using-vs?view=aspnetcore-2.1).
 
 The screenshot below shows the app's start page.
@@ -64,20 +64,6 @@ Generate the batch request in order to fetch below data
 
 1. Create subscription for current signed in user's email messages.
 2. Verify that notifications are coming through
-
-## Key components of the sample
-
-The following files contain code that's related to connecting to Microsoft Graph, loading user data and sending emails.
-
-* [`appsettings.json`](MicrosoftGraphAspNetCoreConnectSample/appsettings.json) Contains values used for authentication and authorization. 
-* [`Startup.cs`](MicrosoftGraphAspNetCoreConnectSample/Startup.cs) Configures the app and the services it uses, including authentication.
-* [`GraphAuthProvider.cs`](MicrosoftGraphAspNetCoreConnectSample/Helpers/GraphAuthProvider.cs) Gets an access token using MSAL's **AcquireTokenSilentAsync** method.
-* [`GraphSdkHelper.cs`](MicrosoftGraphAspNetCoreConnectSample/Helpers/GraphSDKHelper.cs) Initiates the SDK client used to interact with Microsoft Graph.
-* [`GraphService.cs`](MicrosoftGraphAspNetCoreConnectSample/Helpers/GraphService.cs) Contains methods that use the **GraphServiceClient** to build and send calls to the Microsoft Graph service and to process the response.
-  * The **GetUserJson** action gets the user's profile by an email adress and converts it to JSON.
-  * The **GetPictureBase64** action gets the user's profile picture and converts it to a base64 string.
-  * The **SendEmail** action sends an email on behalf of the current user.
-* [`SessionTokenCache.cs`](MicrosoftGraphAspNetCoreConnectSample/Helpers/SessionTokenCache.cs) Sample implementation of an in-memory token cache. Production apps will typically use some method of persistent storage.
 
 ## Copyright
 
