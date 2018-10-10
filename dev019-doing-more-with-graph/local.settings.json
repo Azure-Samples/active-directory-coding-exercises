@@ -1,0 +1,13 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "AzureWebJobsDashboard": "UseDevelopmentStorage=true",
+    "ClientId": "(replace with your client id)",
+    "ClientSecret": "(replace with your client secret",
+    "AuthorityUrl": "https://login.microsoftonline.com/(replace with your tenant)/oauth2/authorize",
+    "CognitiveAPIUrl": "(replace with your content moderator endpoint)",
+    "CognitiveAPIKey": "(replace with your cognitive services API key)",
+    "UserId": "(replace with your demo user@domain)"
+  }
+}
