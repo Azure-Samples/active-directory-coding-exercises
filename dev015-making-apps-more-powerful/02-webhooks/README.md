@@ -1,6 +1,6 @@
-# Graph batch exercise
+# Graph webhooks exercise
 
-This is a ASP .NET Core app and can be loaded, through VS 2017 or VS Code.  It uses
+This is a ASP .NET Core app and can be loaded through VS 2017.  It uses
 both the Microsoft Authentication Library (MSAL) and the Microsoft Graph SDK.
 It's partially completed, and the instuctions walk through the steps you'll need
 to take to complete the exercise - by adding code and guidance on what to add in the right places, such as:
@@ -18,19 +18,14 @@ to take to complete the exercise - by adding code and guidance on what to add in
 
 1. VS 2017 
 2. .NET Core 2.1 SDK
-3. If using VS Code, you'll need the **C# for Visual Studio Code** extension
-4. Azure web app ex: https://YOURWEBAPP.azurewebsites.net/
+3. Azure web app ex: https://YOURWEBAPP.azurewebsites.net/ . Steps [here](https://docs.microsoft.com/en-us/azure/app-service/app-service-web-get-started-dotnet)
 
 ## Instructions
 
 ### Getting started
 
 1. Clone or download the repo from here: https://github.com/Azure-Samples/active-directory-coding-exercises
-2. Go to the `dev015-making-apps-more-powerful\02-webhooks` folder and open the solution file in VS 2017, or in VS Code open the 01-user-changes folder.
-    1. When opening in VS Code, click yes to resolve any required C# elements and also click to restore packages.
-    2. If package restore doesn't work as part of building the solution, you can do this manually too: Terminal -> New Terminal, and then in the new terminal, type: 
-        * `dotnet add package Microsoft.Graph`, and hit Restore button when prompted (if prompted)
-        * `dotnet add package Microsoft.Identity.Client`, and hit Restore button when prompted (if prompted)
+2. Go to the `dev015-making-apps-more-powerful\02-webhooks` folder and open the solution file in VS 2017
 3. Go to the private preview app registration experience at http://aka.ms/appregprivatepreview . Register a new single tenant app, and create a new secret.  Also get the client id. Configure the app with **openid**, **email**, **profile**, **offline_access**, **User.Read**, **User.ReadBasic.All** and **Mail.Send** permissions and then **grant** the app this permission. Also ensure the redirect uri is set to https://YOURWEBAPP.azurewebsites.net/signin-oidc.
 4. Update appSettings.json file as below:
    * a. For the **ClientId** key, replace `ENTER_YOUR_APP_ID` with the application ID of your registered application.  
