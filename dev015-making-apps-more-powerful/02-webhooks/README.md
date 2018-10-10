@@ -26,7 +26,7 @@ to take to complete the exercise - by adding code and guidance on what to add in
 
 1. Clone or download the repo from here: https://github.com/Azure-Samples/active-directory-coding-exercises
 2. Go to the `dev015-making-apps-more-powerful\02-webhooks` folder and open the solution file in VS 2017
-3. Go to the private preview app registration experience at http://aka.ms/appregprivatepreview . Register a new single tenant app, and create a new secret.  Also get the client id. Configure the app with **openid**, **email**, **profile**, **offline_access**, **User.Read**, **User.ReadBasic.All** and **Mail.Send** permissions and then **grant** the app this permission. Also ensure the redirect uri is set to https://YOURWEBAPP.azurewebsites.net/signin-oidc.
+3. Go to the private preview app registration experience at http://aka.ms/appregprivatepreview . Register a new **multi-tenant** app, and create a new secret.  Also get the client id (you'll need this for configuring clientId and secret in the next step). Configure the app with **openid**, **email**, **profile**, **offline_access**, **User.Read**, **User.ReadBasic.All** and **Mail.Send** permissions and then **grant** the app this permission. Also ensure the redirect uri is set to https://YOURWEBAPP.azurewebsites.net/signin-oidc.
 4. Update appSettings.json file as below:
    * a. For the **ClientId** key, replace `ENTER_YOUR_APP_ID` with the application ID of your registered application.  
    * b. For the **ClientSecret** key, replace `ENTER_YOUR_SECRET` with the password of your registered application. Note that in production 
